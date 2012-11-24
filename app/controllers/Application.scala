@@ -8,6 +8,9 @@ object Application extends Controller with Persistent {
 
   def index = TransAction { request =>
     implicit session =>
+      /*
+       * here we have to import the driver to get the correct database table implementation 
+       */
       import driver.simple._
       blogEntries.insert(BlogEntry("s1", "t1"))
       val entries = for (b <- blogEntries) yield b
